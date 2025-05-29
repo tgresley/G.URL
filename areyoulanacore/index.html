@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>#lanacore</title>
+  <style>
+
+        body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./americanflag.jpg'); /* ← Replace with your fallback image path */
+  background-size: cover;
+  background-position: center;
+  z-index: -3; /* Must be lower than the video’s z-index */
+}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+
+
+    video#bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    #quizback {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 820px;
+      z-index: -1;
+    }
+
+    #prizesticker {
+      position: fixed;
+      top: 640px;
+      left: 40px;
+      width: 200px;
+      z-index: -1;
+    }
+
+    #type {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      width: 200px;
+      height: 600px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .quiz-container {
+      display: flex;
+      padding: 40px 180px;
+    }
+
+    .column {
+      width: 15%;
+      padding: 10px 30px;
+    }
+
+    .question-block {
+      margin-bottom: 10px;
+    }
+
+    .question-block p {
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    .button-container {
+      position: fixed;
+      top: 780px;
+      left: 650px;
+    }
+
+    #wallpaper {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 98%;
+      height: auto;
+      z-index: 999;
+      padding: 20px;
+      object-fit: cover;
+    }
+
+    #close-wallpaper {
+      display: none;
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 1020;
+      background: #e4e4e4;
+      color: #000;
+      border: none;
+      padding: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      padding: 0px;
+      font-size: 12px;
+    }
+
+    .correct::after {
+      content: ' ✅';
+    }
+
+    .incorrect::after {
+      content: ' ❌';
+    }
+
+    #congrats-message {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: rgb(255, 0, 0);
+  z-index: 1001;
+  animation: fadeInOut 3s ease-in-out forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -60%); }
+  10% { opacity: 1; transform: translate(-50%, -50%); }
+  90% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -40%); }
+}
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  z-index: 900;
+}
+  </style>
+</head>
+<body>
+  <video id="bg-video" loop playsinline style="display: none;">
+    <source src="./Lana Del Rey - Venice Bitch (Official Music Video).mp4" type="video/mp4">
+  </video>
+
+  <img id="quizback" src="lana.jpg" alt="Quiz Background" />
+  <img id="prizesticker" src="./prizesticker.gif" alt="">
+  <img id="type" src="text.png" alt="youdontknowlanalikeiknowlana">
+
+  <div class="quiz-container" id="quiz-container"></div>
+
+  <div class="button-container">
+    <button id="reset">Reset</button>
+    <button id="check-btn">Check Answers</button>
+  </div>
+
+  <img id="wallpaper" src="lanacore.png" alt="Lana Wallpaper">
+  <button id="close-wallpaper">Close ✖</button>
+
+<div id="congrats-message">Congrats... you are highkey Lana-core as fuck </div>
+
+   <a href="/directory/index.html">
+  <img src="./homebutton.gif" alt="Home" class="home-button" />
+</a>
+
+
+  <script>
+    const questions = [
+      { q: "Which of these is the most Lana-coded?", options: ["pepsi", "an american flag in slow motion", "cocaine", "cherry earings"], answer: 1 , type: "mc" },
+      { q: "pick a man:", options: ["a chain-smoking felon who writes poetry", "gas station worker", "normal", "a deer hunter"], answer: 0, type: "mc" },
+      { q: "whats the best way to experience heartbreak", options: ["in a vintage car with non-waterproof mascara", "over facetime in a shein corset", "in 1962", "with dignity (wrong answer)"], answer: 2, type: "mc" },
+      { q: "what does nfa stand for", answer: "norman fucking rockwell", type: "text" },
+      { q: "what is born to die about", options: ["Baudrillard", "instagram captions for girls who cry pretty", "Daddy issues and national decline", "gym playlists"], answer: 2, type: "mc" },
+      { q: "what genre is lana", options: ["hip-hop", "narcissist noir", "indie pop (derogatory)", "depression with a fade"], answer: 1, type: "mc" },
+      { q: "what was lana's first stage name", answer: "lizzy grant", type: "text" },
+      { q: "What’s your dream date?", options: ["Watching Blue Velvet in a motel with no AC", " Lying on the hood of a car in a desert crying about capitalism", "playing video games", "going to waffle house"], answer: 0, type: "mc" },
+      { q: "whats the correct use of the amnerican flag", options: ["Wrapping yourself in it before diving into the ocean", "As ironic Instagram decor", " Flammable symbolism ", "respectful display on porch"], answer: 2, type: "mc" },
+      { q: "What’s the best setting for a Lana song?", options: ["driving down the white lines of the freeway (shoutout joni)", "Neon-lit strip club with a broken jukebox", "abandoned mall", "alone in your room"], answer: 1, type: "mc" }
+    ];
+
+    const quizContainer = document.getElementById('quiz-container');
+    const checkBtn = document.getElementById('check-btn');
+    const wallpaper = document.getElementById('wallpaper');
+    const closeWallpaperBtn = document.getElementById('close-wallpaper');
+    const bgVideo = document.getElementById('bg-video');
+
+    let selections = Array(questions.length).fill(null);
+    let inputs = Array(questions.length).fill(null);
+    let videoUnmuted = false;
+
+    function unmuteVideo() {
+      if (!videoUnmuted) {
+        bgVideo.muted = false;
+        bgVideo.volume = 1;
+        bgVideo.play();
+        videoUnmuted = true;
+      }
+    }
+
+    function renderQuiz() {
+      const col1 = document.createElement('div');
+      col1.className = 'column';
+      const col2 = document.createElement('div');
+      col2.className = 'column';
+
+      questions.forEach((q, i) => {
+        const qBlock = document.createElement('div');
+        qBlock.className = 'question-block';
+        qBlock.setAttribute('data-index', i);
+
+        const qText = document.createElement('p');
+        qText.textContent = `${i + 1}. ${q.q}`;
+        qBlock.appendChild(qText);
+
+        if (q.type === 'mc') {
+          const opts = document.createElement('div');
+          opts.className = 'options';
+
+          q.options.forEach((opt, j) => {
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = `q${i}`;
+            radio.value = j;
+            radio.addEventListener('change', () => {
+              selections[i] = parseInt(radio.value);
+              unmuteVideo();
+            });
+            label.appendChild(radio);
+            label.appendChild(document.createTextNode(opt));
+            opts.appendChild(label);
+          });
+
+          qBlock.appendChild(opts);
+        } else if (q.type === 'text') {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.addEventListener('input', () => {
+            inputs[i] = input.value.trim();
+          });
+          qBlock.appendChild(input);
+        }
+
+        (i < 5 ? col1 : col2).appendChild(qBlock);
+      });
+
+      quizContainer.appendChild(col1);
+      quizContainer.appendChild(col2);
+    }
+
+    function checkAnswers() {
+      let allCorrect = true;
+
+      questions.forEach((q, i) => {
+        const qBlock = quizContainer.querySelector(`[data-index='${i}']`);
+        qBlock.classList.remove('correct', 'incorrect');
+
+        if (q.type === 'mc') {
+          if (selections[i] === q.answer) {
+            qBlock.classList.add('correct');
+          } else {
+            qBlock.classList.add('incorrect');
+            allCorrect = false;
+          }
+        } else {
+          if ((inputs[i] || '').toLowerCase() === q.answer.toLowerCase()) {
+            qBlock.classList.add('correct');
+          } else {
+            qBlock.classList.add('incorrect');
+            allCorrect = false;
+          }
+        }
+      });
+if (allCorrect) {
+  wallpaper.style.display = 'block';
+  closeWallpaperBtn.style.display = 'block';
+
+  // Show animated congrats message
+  const msg = document.getElementById('congrats-message');
+  msg.style.display = 'block';
+  msg.classList.remove('fade-out');
+  msg.style.animation = 'fadeInOut 3s ease-in-out forwards';
+
+  // Auto-download the image
+  const link = document.createElement('a');
+  link.href = 'lanacore.png';
+  link.download = 'lanacore.png';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+    }
+
+    function resetQuiz() {
+      selections.fill(null);
+      inputs.fill(null);
+      wallpaper.style.display = 'none';
+      closeWallpaperBtn.style.display = 'none';
+      quizContainer.innerHTML = '';
+      renderQuiz();
+    }
+
+    renderQuiz();
+    checkBtn.addEventListener('click', checkAnswers);
+    document.getElementById('reset').addEventListener('click', resetQuiz);
+    closeWallpaperBtn.addEventListener('click', () => {
+      wallpaper.style.display = 'none';
+      closeWallpaperBtn.style.display = 'none';
+    });
+
+
+    document.body.addEventListener('click', () => {
+  if (!videoUnmuted) {
+    bgVideo.style.display = 'block';
+    bgVideo.muted = false;
+    bgVideo.volume = 1;
+    bgVideo.play().catch(e => console.warn("Autoplay blocked:", e));
+    videoUnmuted = true;
+  }
+}, { once: true }); // Only runs once
+  </script>
+</body>
+</html>
