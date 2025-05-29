@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>homepage</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(./mainpageassets/floralbackground.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .clickablegifs {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 20;
+    }
+
+    .gif {
+      position: absolute;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .gif1 { top: 5%; left: 10%; }
+    .gif2 { top: 20%; left: 30%; }
+    .gif3 { top: 50%; left: 15%; }
+    .gif4 { top: 40%; left: 50%; }
+    .gif5 { top: 10%; left: 70%; }
+    .gif6 { top: 60%; left: 60%; }
+    .gif7 { top: 30%; left: 80%; }
+    .gif8 { top: 45%; left: 25%; }
+
+.gif1 img { width: 200px; }
+.gif2 img { width: 160px; }
+.gif3 img { width: 140px; }
+.gif4 img { width: 180px; }
+.gif5 img { width: 150px; }
+.gif6 img { width: 170px; }
+.gif7 img { width: 120px; }
+.gif8 img { width: 60px; }
+
+    .gif img {
+      display: block;
+      margin: 0 auto;
+      width: 140px;
+    }
+
+    .gif a {
+      display: inline-block;
+      margin-top: 4px;
+      color: rgb(0, 0, 255);
+      text-decoration: underline;
+     
+   
+      font-weight: bold;
+    }
+
+    .gif a:hover {
+      background: hotpink;
+      color: white;
+    }
+
+    .online {
+      position: absolute;
+      bottom: 180px;
+      right: 10px;
+      height: 70px;
+      width: auto;
+      z-index: 20;
+    }
+
+    .music {
+  z-index: 999;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  height: 120px;
+  width: auto;
+}
+
+    .banner {
+    position: absolute;
+      top: 30px;
+      left: 60px;
+      height: 120px;
+      width: auto;
+      z-index: 20;  
+    }
+      .bannertwo {
+    position: absolute;
+      top: 30px;
+      right: 60px;
+      height: 120px;
+      width: auto;
+      z-index: 20;  
+    }
+      .bannerthree {
+    position: absolute;
+      top: 30px;
+      right: 560px;
+      height: 120px;
+      width: auto;
+      z-index: 20;  
+    }
+
+       .bannerfour {
+    position: absolute;
+      top: 30px;
+      left: 440px;
+      height: 120px;
+      width: auto;
+      z-index: 20;  
+    }
+
+    .bottombanner {
+ position: absolute;
+      bottom: 30px;
+     left: 60px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+  .bottombannertwo {
+ position: absolute;
+      bottom: 30px;
+     left: 440px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+
+      .bottombannerthree {
+ position: absolute;
+      bottom: 30px;
+     left: 560px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+
+         .bottombannerfour {
+ position: absolute;
+      bottom: 30px;
+     left: 1030px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+
+        .bottombannerfive {
+ position: absolute;
+      bottom: 90px;
+     left: 60px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+
+         .bottombannersix {
+ position: absolute;
+      bottom: 90px;
+     left: 420px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+
+          .bottombannerseven {
+ position: absolute;
+      bottom: 90px;
+     left: 660px;
+      height: 60px;
+      width: auto;
+      z-index: 20;  
+    }
+   
+
+    .fixedgif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.fixed {
+  position: absolute;
+  pointer-events: none;
+}
+
+.fixed img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+/* Example individual sizing */
+.fixed:nth-child(1) img { width: 60px; }
+.fixed:nth-child(2) img { width: 140px; }
+.fixed:nth-child(3) img { width: 120px; }
+.fixed:nth-child(4) img { width: 90px; }
+.fixed:nth-child(5) img { width: 110px; }
+.fixed:nth-child(6) img { width: 80px; }
+.fixed:nth-child(7) img { width: 90px; }
+.fixed:nth-child(8) img { width: 180px; }
+
+
+
+.topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+}
+
+.topmostbanner {
+height: 30px;
+}
+
+.bottomline {
+     position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row; 
+}
+
+  </style>
+</head>
+<body>
+
+<img class="online" src="./gifs/online-old-web.gif" alt="">
+<img class="music" id= "boombox" src="./gifs/bmbox.gif" alt="">
+
+<audio id="boombox-audio" src="./mainpageassets/Johnny Cash - Hurt.mp3" loop></audio>
+
+
+<img class="banner" src="./womenhealth.gif" alt="">
+<img class="bannertwo" src="./lindabanner.gif" alt="">
+<img class="bannerthree" src="./banner.gif" alt="">
+     
+
+
+<img class="bottombanner" src="./webqueen.gif" alt="">
+<img class="bottombannertwo" src="./lpcanimatedbanner.gif" alt="">
+<img class="bottombannerthree" src="./britney.gif" alt="">
+<img class="bottombannerfour" src="./marriage.gif" alt="">
+<img class="bottombannerfive" src="./banner2.gif" alt="">
+<img class="bottombannersix" src="./glambanner.gif" alt="">
+<img class="bottombannerseven" src="./riverisland.gif" alt="">
+
+
+  <!-- Clickable gifs with positioned links -->
+  <div class="clickablegifs">
+    <div class="gif gif1">
+      <img src="./gifs/computer.gif" alt="">
+      <a href="/girlblog/index.html">#g1rlbl0g</a>
+    </div>
+
+    <div class="gif gif2">
+      <img src="./gifs/curtain.gif" alt="">
+      <a href="/polkadot/index.html">#m1cr0tr3ndf1n4lb0ss</a>
+    </div>
+
+    <div class="gif gif3">
+      <img src="./gifs/rose.gif" alt="">
+      <a href="/areyoulanacore/index.html">#l4n4core</a>
+    </div>
+
+    <div class="gif gif4">
+      <img src="./gifs/Calculator.gif" alt="">
+      <a href="/girlmath/index.html">#g1rlmath</a>
+    </div>
+
+    <div class="gif gif5">
+      <img src="./gifs/sexylady.gif" alt="">
+      <a href="/amipretty/index.html">#am1pretty??????</a>
+    </div>
+
+    <div class="gif gif6">
+      <img src="./gifs/ramona.gif" alt="">
+      <a href="/manicpixie/index.html">#girlcrazy!!!</a>
+    </div>
+
+    <div class="gif gif7">
+      <img src="./gifs/love.gif" alt="">
+      <a href="/girlpoem/index.html">#tweetpoem</a>
+    </div>
+
+    <div class="gif gif8">
+      <img src="./gifs/girldancin.gif" alt="">
+      <a href="/girlmeme/index.html">#g(url)m3mes</a>
+    </div>
+  </div>
+
+<div class="fixedgif">
+  <div class="fixed"><img src="./gifs/girly.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/dollarspindownd.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/girl.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/girlback_main.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/girlweb.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/Hello Kitty Pink GIF.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/kissme.gif" alt=""></div>
+  <div class="fixed"><img src="./gifs/sexyvirgin.gif" alt=""></div>
+</div>
+
+<script>
+  // Random placement of fixed gifs
+  const fixedGifs = document.querySelectorAll('.fixed');
+  fixedGifs.forEach(gif => {
+    const percentX = 5 + Math.random() * 80;
+    const percentY = 20 + Math.random() * 60;
+    gif.style.left = `${percentX}vw`;
+    gif.style.top = `${percentY}vh`;
+  });
+
+  // Play audio on boombox click
+  const boombox = document.getElementById('boombox');
+  const boomboxAudio = document.getElementById('boombox-audio');
+
+  boombox.addEventListener('click', () => {
+    boomboxAudio.load(); // Ensures audio is ready
+    boomboxAudio.play().then(() => {
+      console.log("Audio started");
+    }).catch(err => {
+      console.warn("Autoplay blocked or other error:", err);
+    });
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,23 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G.URL</title>
-</head>
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>g.url</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-image: url(./FINALMOODBOARD.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+
+
+
+    .title {
+      position: absolute;
+      align-items: center;
+      top: 8%;
+      left: 30vw;
+      z-index: 10;
+    }
+
+    .title img {
+      width: 40vw;
+    }
+
+   
+
+    .subtitle {
+  position: absolute;
+  top: 32vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  z-index: 10;
+
 }
 
-    img {
-        height: 100vh;
-        width: 100vw;
-    }
-</style>
+.subtitle img {
+    width: 50vw;
+    height: auto;
+
+}
+
+.boxrow {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    position: absolute;
+    top: 45vh;
+    left: 50%;
+     transform: translateX(-50%);
+     z-index: 10;
+}
+
+
+.boxrow img{
+    width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+
+
+
+.textquestion {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+
+.textquestion img {
+    height: 40vh;
+    width: auto;
+}
+
+.enterbutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; /* aligns bottoms – change to center if needed */
+  gap: 20px;
+  position: absolute;
+  top: 74vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.button-container {
+
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.enterbutton img {
+  height: 12vh;
+  width: auto;
+  object-fit: contain;
+}
+
+.gif-arrow {
+  height: 30px;
+  width: auto;
+}
+
+#enter {
+  height: 8vh;
+  width: auto;
+  animation: pulse 0.8s infinite ease-in-out;
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* Adjust for how big you want it to grow */
+  }
+}
+
+
+.texture {
+    display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100; /* on top of everything else */
+  pointer-events: none; /* so it doesn't block interactions */
+  opacity: 0.2;
+  mix-blend-mode: screen; /* change to screen, overlay, etc. for effect */
+}
+
+.texture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+  </style>
+</head>
 <body>
-    <img src="./FINALMOODBOARD.png" alt="">
+
+    <div class="texture">
+<img src="./gray-gingham-fabric-textured-background.jpg" alt="">
+    </div>
+
+  <div class="title">
+    <img src="./g.url.png" alt="">
+  </div>
+
+  <div class="subtitle">
+    <img src="./subheading.png" alt="">
+  </div>
+
+<div class="boxrow">
+<img src="./G.png" alt="">
+<img src="./U.png" alt="">
+<img src="./R.png" alt="">
+<img src="./L.png" alt="">
+</div>
+
+
+
+  <div class="textquestion">
+<img src="./clickabletext.png" alt="">
+  </div>
+
+<div class="enterbutton">
+  <div class="button-container"> <img class="gif-arrow" src="./pfeilvor.gif" alt=""> </div>
+  <div class="button-container"><img class="blinking-arrow" src="./arrow1.png" alt=""></div>
+  <div class="button-container"><img class="blinking-arrow" src="./arrow1.png" alt=""></div>
+  <div class="button-container"><img id="enter" src="./ENTERBUTTON.png" alt=""></div>
+  <div class="button-container"><img class="blinking-arrow" src="./arrow2.png" alt=""></div>
+  <div class="button-container"><img class="blinking-arrow" src="./arrow2.png" alt=""></div>
+  <div class="button-container"> <img class="gif-arrow" src="./pfeilzurueck.gif" alt=""> </div>
+</div>
+
+
+<script>
+  const arrows = document.querySelectorAll('.blinking-arrow');
+  let visible = true;
+
+  setInterval(() => {
+    visible = !visible;
+    arrows.forEach(arrow => {
+      arrow.style.opacity = visible ? "1" : "0";
+    });
+  }, 200); // change every 600ms
+
+
+    const enterButton = document.getElementById('enter');
+  enterButton.addEventListener('click', () => {
+    window.location.href = "/directory/index.html"; 
+  });
+
+</script>
+
+
 </body>
 </html>
