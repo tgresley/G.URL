@@ -28,6 +28,8 @@ function preload() {
 }
 
 function setup() {
+
+  
   createCanvas(baseWidth, baseHeight);
   video = createCapture(VIDEO);
   video.size(baseWidth, baseHeight);

@@ -17,6 +17,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      cursor: url(./cursor/britner.cur),auto;
     }
 
     h2 {
@@ -64,6 +65,7 @@
     .quiz-button {
       padding: 8px 16px;
       font-size: 16px;
+      cursor: url(./cursor/lidseylohanmughsot.cur), pointer;
     }
 
     .fullscreen-canvas {
@@ -134,6 +136,7 @@
       position: absolute;
       top: 20px;
       right: 20px;
+      cursor: url(./cursor/lidseylohanmughsot.cur), pointer;
     }
 
       .home-button {
@@ -144,8 +147,80 @@
   height: auto;
   cursor: pointer;
   z-index: 1000;
-
+cursor: url(./cursor/lidseylohanmughsot.cur), pointer;
 }
+
+/* --- PAPRIKA --- */
+.girl-paprika #toggleAudioBtn:hover,
+.girl-paprika .audio-toggle:hover,
+.girl-paprika #closeResultBtn:hover,
+.girl-paprika .pfp-download:hover,
+.girl-paprika .girl-page button:hover
+ {
+   cursor: url(./cursor/P.cur), pointer;
+}
+
+/* --- LAYLA --- */
+.girl-layla #toggleAudioBtn:hover,
+.girl-layla .audio-toggle:hover,
+.girl-layla #closeResultBtn:hover,
+.girl-layla .pfp-download:hover,
+.girl-layla .girl-page button:hover {
+   cursor: url(./cursor/B66.cur), pointer;
+}
+
+/* --- ANGELA HAYES --- */
+.girl-angelahayes #toggleAudioBtn:hover,
+.girl-angelahayes .audio-toggle:hover,
+.girl-angelahayes #closeResultBtn:hover,
+.girl-angelahayes .pfp-download:hover,
+.girl-angelahayes .girl-page button:hover {
+cursor: url(./cursor/AB.cur), pointer;
+}
+
+.girl-doloreshayeslolita #toggleAudioBtn:hover,
+.girl-doloreshayeslolita .audio-toggle:hover,
+.girl-doloreshayeslolita #closeResultBtn:hover,
+.girl-doloreshayeslolita .pfp-download:hover,
+.girl-doloreshayeslolita .girl-page button:hover {
+cursor: url(./cursor/LOLITA1.cur), pointer;
+}
+
+
+.girl-christianef #toggleAudioBtn:hover,
+.girl-christianef .audio-toggle:hover,
+.girl-christianef #closeResultBtn:hover,
+.girl-christianef .pfp-download:hover,
+.girl-christianef .girl-page button:hover {
+cursor: url(./cursor/CF.cur), pointer;
+}
+
+.girl-lilja #toggleAudioBtn:hover,
+.girl-lilja .audio-toggle:hover,
+.girl-lilja #closeResultBtn:hover,
+.girl-lilja .pfp-download:hover,
+.girl-lilja .girl-page button:hover {
+cursor: url(./cursor/LILYA1.cur), pointer;
+}
+
+.girl-luxlisbon #toggleAudioBtn:hover,
+.girl-luxlisbon .audio-toggle:hover,
+.girl-luxlisbon #closeResultBtn:hover,
+.girl-luxlisbon .pfp-download:hover,
+.girl-luxlisbon .girl-page button:hover {
+cursor: url(./cursor/VS.cur), pointer;
+}
+
+.girl-daisyrandone #toggleAudioBtn:hover,
+.girl-daisyrandone .audio-toggle:hover,
+.girl-daisyrandone #closeResultBtn:hover,
+.girl-daisyrandone .pfp-download:hover,
+.girl-daisyrandone .girl-page button:hover {
+cursor: url(./cursor/GI.cur), pointer;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -190,91 +265,99 @@
       {
         title: "paprika",
         text: "You aren't mentally ill, you are just manic-pixie dream girl, literally. <br> <b>age</b>: 26 <br>  <b>sex</b>: g.url <br>  <b>location </b>: near-future, Japan <br>  <b>favourite animal</b>: butterfly <br>  <b>interests</b>: entering peoples dreams, flying, making men fall in love with you",
-        img: "png.png",
+        img: "./cursor/P.cur",
         bg: "./bg/PAP_BG.jpg",
         pfp: "./pfp/PAPRIKA_PFP.png",
         audio: "./audio/PAPRIKA_SONG.mp3",
         album: "./albums/PAPRIKA.jpg",
         caption: "meditiational feild - sisumu hirasawa",
-        interaction: "<button onclick='alert(\"You entered a stranger’s REM cycle.\")'>Enter dream</button>"
+        interaction: "<button onclick='alert(\"You entered a stranger’s REM cycle.\")'>Enter dream</button>",
+        cursor: "./cursor/paprika.cur"
       },
       {
         title: "layla",
         text: "You think mean boys need love too <3. <br> <b>age</b>: 16 <br>  <b>sex</b>: g.url <br>  <b>location </b>: Buffalo, New York <br>  <b>favourite animal</b>: butterfly <br>  <b>interests</b>: roses, male projection",
-        img: "honeymoon.jpg",
+        img: "./cursor/B66.cur",
         bg: "./bg/B66_BG.jpg",
         pfp: "./pfp/B66_PFP.png",
         audio: "./audio/B66_SONG.mp3",
         album: "./albums/BF.jpg",
         caption: "lonely boy - vincent gallo",
-        interaction: "<button onclick='alert(\"You just cried on the plane ride home.\")'>Cry again</button>"
+        interaction: "<button onclick='alert(\"You just cried on the plane ride home.\")'>Cry again</button>",
+         cursor: "./cursor/layla.cur"
       },
       {
         title: "angela hayes",
         text: "You could seduce your best friends dad. <br> <b>age</b>: 16 <br>  <b>sex</b>: g.url <br>  <b>location </b>: the suburbs, California <br>  <b>favourite animal</b>: butterfly <br>  <b>interests</b>: roses, the male gaze and insecure attachment",
-        img: "dadcrush.jpg",
+        img: "./cursor/AB.cur",
         bg: "./bg/AB_BG.webp",
         pfp: "./pfp/AB_PFP.png",
         audio: "./audio/AB_SONG.mp3",
         album: "./albums/AB.jpg",
         caption: "dead already - thomas newman",
-        interaction: "<button onclick='alert(\"You asked your friend's dad for a ride.\")'> Flirt </button>"
+        interaction: "<button onclick='alert(\"You asked your friend's dad for a ride.\")'> Flirt </button>",
+        cursor: "./cursor/angelahayes.cur"
       },
 
       {
         title: "dolores hayes 'lolita'",
         text: "You are such a #nymphette. <br> <b>age</b>: 14 <br>  <b>sex</b>: g.url <br>  <b>location </b>: small town, America <br>  <b>favourite animal</b>: butterfly <br>  <b>interests</b>: candy, cheekiness and roadtrips",
-        img: "milfhunter.jpg",
+        img: "./cursor/LOLITA1.cur",
         bg: "./bg/LOLITA_BG.jpg",
         pfp: "./pfp/LOLITA_PFP.png",
         audio: "./audio/LOLITA_SONG.mp3",
         album: "./albums/LOLITA.jpg",
         caption: "in the mood for love - julie london",
-        interaction: "<button onclick='alert(\"humbert stared too much..\")'>run in the sprinklers</button>"
+        interaction: "<button onclick='alert(\"humbert stared too much..\")'>run in the sprinklers</button>",
+        cursor: "./cursor/lolita.cur"
       },
       {
         title: "christiane.f",
         text: "You started a heroin addiction for a boy. <br> <b>age</b>: 14 <br>  <b>sex</b>: g.url <br>  <b>location </b>: Zoo Station, West Berlin <br>  <b>favourite animal</b>: cat <br>  <b>interests</b>: david bowie, heroin, plastic bags and vinyl collections",
-        img: "neolib.jpg",
+        img: "./cursor/CF.cur",
         bg: "./bg/CF_BG.jpg",
         pfp: "./pfp/CF_PFP.png",
         audio: "./audio/CF_SONG.mp3",
         album: "./albums/CF.jpg",
         caption: "sense of doubt - david bowie",
-        interaction: "<button onclick='alert(\"WIR KINDER VOM BAHNHOF ZOO - you just overdosed\")'> go to bahnhof zoo</button>"
+        interaction: "<button onclick='alert(\"WIR KINDER VOM BAHNHOF ZOO - you just overdosed\")'> go to bahnhof zoo</button>",
+          cursor: "./cursor/christianef.cur"
       },
       {
         title: "lilja",
         text: "Your mum left you in the soviet housing estate. <br> <b>age</b>: 14 <br>  <b>sex</b>: g.url <br>  <b>location </b>: unknown, Soviet Union <br>  <b>favourite animal</b>: bird <br>  <b>interests</b>: vodka, angel wings, friendship",
-        img: "soviet.jpg",
+        img: "./cursor/LILYA1.cur",
         bg: "./bg/L4E_BG.jpg",
         pfp: "./pfp/L4E_PFP.png",
         audio: "./audio/L4E_SONG.mp3",
         album: "./albums/L4E.jpg",
         caption: "mein hertz brent - rammstein",
-        interaction: "<button onclick='alert(\"you actually just died\")'>escape</button>"
+        interaction: "<button onclick='alert(\"you actually just died\")'>escape</button>",
+        cursor: "./cursor/lilya.cur"
       },
       {
         title: "lux lisbon",
         text: "Your gang small but y'all crazy. <br> <b>age</b>: 14 <br>  <b>sex</b>: g.url <br>  <b>location </b>: Grosse Pointe, Michigan <br>  <b>favourite animal</b>: cat <br>  <b>interests</b>: cigarettes, being mysterious, defying catholicism",
-        img: "pact.jpg",
+        img: "./cursor/VS.cur",
         bg: "./bg/VS_BG.jpeg",
         pfp: "./pfp/VS_PFP.png",
         audio: "./audio/VS_SONG.mp3",
         album: "./albums/VS.png",
         caption: "playground love - air",
-        interaction: "<button onclick='alert(\"You scheduled a moonlit ritual while smoking on the roof.\")'>Swear pact</button>"
+        interaction: "<button onclick='alert(\"You scheduled a moonlit ritual while smoking on the roof.\")'>Swear pact</button>",
+        cursor: "./cursor/luxlisbon.cur"
       },
       {
         title: "daisy randone",
         text: "You only eat chicken and laxatives. <br> <b>age</b>: 18 <br>  <b>sex</b>: g.url <br>  <b>location </b>: Grosse Pointe, Michigan <br>  <b>favourite animal</b>: chicken <br>  <b>interests</b>: cigarettes, being mysterious, defying catholicism",
-        img: "pact.jpg",
+        img: "./cursor/GI.cur",
         bg: "./bg/GI_BG.jpg",
         pfp: "./pfp/G1_PFP.png",
         audio: "./audio/GI_SONG.mp3",
         album: "./albums/GI.jpg",
         caption: "downtown - petula clarke",
-        interaction: "<button onclick='alert(\"it didnt go well...\")'> You were released! </button>"
+        interaction: "<button onclick='alert(\"it didnt go well...\")'> You were released! </button>",
+          cursor: "./cursor/daisy.cur"
       }
     ];
     let selectedIndex = null;
@@ -293,6 +376,8 @@
 
       const box = document.createElement('div');
       box.className = 'box';
+      box.style.cursor = `url(${sadgirlResults[index].cursor}), auto`;
+
       box.addEventListener('click', () => {
         selectedIndex = index;
         updateSelection();
@@ -324,19 +409,27 @@
 
       const blockWidth = 900;
       const blockHeight = 300;
-      const maxLeft = window.innerWidth - blockWidth;
-      const maxTop = window.innerHeight - blockHeight;
+ const minTop = window.innerHeight * 0.1;
+const maxTop = window.innerHeight * 0.5;
+const minLeft = window.innerWidth * 0.1;
+const maxLeft = window.innerWidth * 0.7;
 
-      const top = Math.floor(Math.random() * maxTop);
-      const left = Math.floor(Math.random() * maxLeft);
+const top = Math.floor(Math.random() * (maxTop - minTop) + minTop);
+const left = Math.floor(Math.random() * (maxLeft - minLeft) + minLeft);
 
       canvas.style.backgroundImage = `url(${result.bg})`;
+      document.body.style.cursor = `url(${result.cursor}), auto`;
+      document.body.className = ''; // remove previous girl-page class
+document.body.classList.add(`girl-${result.title.replace(/[\s.']/g, '').toLowerCase()}`);
+
 
       content.innerHTML = `
-        <div style="display: flex; gap: 40px; position: absolute; top: ${top}px; left: ${left}px; align-items: flex-start; max-width: ${blockWidth}px;">
-          <div class="pfp-wrapper" style="position: relative; transform: none;">
+        <div class="girl-page ${result.title.replace(/[\s.']/g, '').toLowerCase()}" 
+       style="display: flex; gap: 40px; position: absolute; top: ${top}px; left: ${left}px; align-items: flex-start; max-width: ${blockWidth}px;">
+       <div class="pfp-wrapper" style="position: relative; transform: none;">
             <img src="${result.pfp}" class="pfp" />
             <a href="${result.pfp}" download class="pfp-download">Download custom PFP!</a>
+            <a href="${result.img}" download class="pfp-download">Download custom cursor </a>
           </div>
           <div>
             <h1>${result.title}</h1>

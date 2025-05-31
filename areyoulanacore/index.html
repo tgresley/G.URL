@@ -22,6 +22,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: white;
+      cursor: url(./cursor/arrow.cur), auto;
     }
 
 
@@ -60,6 +61,7 @@
       height: 600px;
       z-index: 10;
       pointer-events: none;
+        cursor: url(./cursor/pointer.cur), pointer;
     }
 
     .quiz-container {
@@ -80,18 +82,21 @@
       margin-bottom: 5px;
       font-weight: bold;
       font-size: 14px;
+        cursor: url(./cursor/pointer.cur), pointer;
     }
 
     .options label {
       display: block;
       margin-bottom: 5px;
       font-size: 12px;
+        cursor: url(./cursor/pointer.cur), pointer;
     }
 
     .button-container {
       position: fixed;
       top: 780px;
       left: 650px;
+  cursor: url(./cursor/pointer.cur), pointer;
     }
 
     #wallpaper {
@@ -123,6 +128,7 @@
     input[type="text"] {
       padding: 0px;
       font-size: 12px;
+       cursor: url(./cursor/pointer.cur), pointer;
     }
 
     .correct::after {
@@ -159,9 +165,34 @@
   right: 20px;
   width: 100px;
   height: auto;
-  cursor: pointer;
+  cursor: url(./cursor/pointer.cur), pointer;
   z-index: 900;
 }
+
+
+button {
+  cursor: url(./cursor/pointer.cur), pointer;
+}
+
+
+label {
+  cursor: url(./cursor/pointer.cur), pointer;
+}
+
+
+input[type="radio"] {
+  cursor: url(./cursor/pointer.cur), pointer;
+}
+
+
+
+input[type="text"],
+textarea {
+  cursor: url(./cursor/text.cur), text;
+}
+
+
+
   </style>
 </head>
 <body>

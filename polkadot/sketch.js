@@ -35,25 +35,33 @@ function setup() {
   nameLabel.position(60, 20).style('color', '#FFFFFF');
   nameInput = createInput();
   nameInput.position(60, 60);
+  nameInput.style('cursor', 'url("./cursor/girl.cur"), pointer' );
+
+
 
   ageLabel = createP("2. How old are you?");
   ageLabel.position(60, 90).style('color', '#FFFFFF');
   ageInput = createInput();
   ageInput.position(60, 130);
+  ageInput.style('cursor', 'url("./cursor/girl.cur"), pointer' );
 
   skinnyLabel = createP("3. How skinny are you?");
   skinnyLabel.position(60, 160).style('color', '#FFFFFF');
   skinnySlider = createSlider(0, 260, 50);
   skinnySlider.position(60, 200);
   skinnySlider.style('width', '280px');
+   skinnySlider.style('cursor', 'url("./cursor/girl.cur"), pointer' );
 
   skinnySliderLabel = createP("#heroinchic ----------------------------> ugly :(");
   skinnySliderLabel.position(60, 205);
   skinnySliderLabel.style('color', '#FFFFFF');
+  skinnySliderLabel.style('cursor', 'url("./cursor/girl.cur"), pointer' );
 
   generateButton = createButton("Generate");
   generateButton.position(60, 270);
   generateButton.mousePressed(onGenerate);
+  generateButton.style('cursor', 'url("./cursor/girl.cur"), pointer' );
+
 }
 
 function draw() {
@@ -113,10 +121,12 @@ function onGenerate() {
   tryAgainButton = createButton("Try Again");
   tryAgainButton.position(60, 340);
   tryAgainButton.mousePressed(() => location.reload());
+  tryAgainButton.style('cursor', 'url("./cursor/girl.cur"), pointer' );
 
   saveButton = createButton("save #yourpolka");
   saveButton.position(160, 340);
   saveButton.mousePressed(() => saveCanvas('mypolka', 'jpg'));
+  saveButton.style('cursor', 'url("./cursor/girl.cur"), pointer' );
 }
 
 function nameToColor(name) {

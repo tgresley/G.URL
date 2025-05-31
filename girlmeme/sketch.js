@@ -45,7 +45,7 @@ let canvas;
 let frameElement;
 
 function preload() {
-  font = loadFont('./impact.ttf', 
+  font = loadFont('./assets/impact.ttf', 
     () => console.log('Font loaded'), 
     () => console.error('Font failed to load')
   );
@@ -58,7 +58,7 @@ function setup() {
   canvas.style('z-index', '2'); // Above the GIF, below the image
 
   // Load and show intro GIF
-  gifElement = createImg('./B175.gif', 'intro gif');
+  gifElement = createImg('./assets/B175.gif', 'intro gif');
   gifElement.position(0, 0);
   gifElement.style('position', 'absolute');
   gifElement.style('top', '50%');
@@ -68,7 +68,7 @@ function setup() {
   gifElement.style('height', '100vh');
   gifElement.style('z-index', '1'); // Bottom layer
 
-  framegifElement= createImg('./frame2.gif', 'intro gif');
+  framegifElement= createImg('./assets/f', 'intro gif');
   framegifElement.position(0, 0);
   framegifElement.style('position', 'absolute');
   framegifElement.style('top', '50%');
@@ -90,7 +90,7 @@ function setup() {
   imgElement.style('z-index', '3'); // Above everything
   imgElement.hide();
 
-    frameElement = createImg('./frame2.gif', 'gif frame'); // Use your frame GIF path
+    frameElement = createImg('./assets/frame2.gif', 'gif frame'); // Use your frame GIF path
   frameElement.position(0, 0);
   frameElement.style('position', 'absolute');
   frameElement.style('top', '50%');
@@ -105,13 +105,14 @@ function setup() {
   let button = createButton("find the most esoteric girl meme");
   button.position(120, 520);
   button.style('z-index', '4'); // Keep button on top
-
+ button.style('cursor', 'url("./cursor/billyray.cur"), pointer'); // 👈 set custom cursor
   button.mousePressed(loadRandomImage);
 
 
  let DLBUTTON = createButton("download your favourite");
 DLBUTTON.position(120, 580);
 DLBUTTON.style('z-index', '4');
+DLBUTTON.style('cursor', 'url("./cursor/billyray.cur"), pointer');
 DLBUTTON.mousePressed(() => {
   if (imgElement && imgElement.elt.src) {
     const link = document.createElement('a');
