@@ -86,103 +86,7 @@
   width: auto;
 }
 
-    .banner {
-    position: absolute;
-      top: 30px;
-      left: 60px;
-      height: 120px;
-      width: auto;
-      z-index: 20;  
-    }
-      .bannertwo {
-    position: absolute;
-      top: 30px;
-      right: 60px;
-      height: 120px;
-      width: auto;
-      z-index: 20;  
-    }
-      .bannerthree {
-    position: absolute;
-      top: 30px;
-      right: 560px;
-      height: 120px;
-      width: auto;
-      z-index: 20;  
-    }
-
-       .bannerfour {
-    position: absolute;
-      top: 30px;
-      left: 440px;
-      height: 120px;
-      width: auto;
-      z-index: 20;  
-    }
-
-    .bottombanner {
- position: absolute;
-      bottom: 30px;
-     left: 60px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-  .bottombannertwo {
- position: absolute;
-      bottom: 30px;
-     left: 440px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-
-      .bottombannerthree {
- position: absolute;
-      bottom: 30px;
-     left: 560px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-
-         .bottombannerfour {
- position: absolute;
-      bottom: 30px;
-     left: 1030px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-
-        .bottombannerfive {
- position: absolute;
-      bottom: 90px;
-     left: 60px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-
-         .bottombannersix {
- position: absolute;
-      bottom: 90px;
-     left: 420px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-
-          .bottombannerseven {
- position: absolute;
-      bottom: 90px;
-     left: 660px;
-      height: 60px;
-      width: auto;
-      z-index: 20;  
-    }
-   
-
+ 
     .fixedgif {
   position: absolute;
   top: 0;
@@ -216,25 +120,46 @@
 
 
 
-.topline {
+.top-banner {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  padding: 0 60px; /* 60px space on each side */
+  display: flex;
+  gap: 0; /* ensures no spacing between images */
+  box-sizing: border-box;
+  height: 120px;
+}
+
+.top-banner img {
+  height: 100%;     /* forces image height to 120px */
+  width: auto;      /* keeps image proportions */
+  flex: 1 1 0;      /* allows all images to grow and fill available space equally */
+  object-fit: cover; /* fills the flex slot even if image aspect ratio varies */
+  display: block;
+}
+
+
+.topbottom-banner {
     position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    width: 90vw;
+  left: 60px;
+bottom: 90px;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: 60px;
 }
 
-.topmostbanner {
-height: 30px;
-}
+.bottom-banner {
+    position: absolute;
+  left: 60px;
+bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: 60px;
 
-.bottomline {
-     position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row; 
 }
 
   </style>
@@ -243,23 +168,32 @@ height: 30px;
 
 <img class="online" src="./gifs/online-old-web.gif" alt="">
 <img class="music" id= "boombox" src="./gifs/bmbox.gif" alt="">
-
 <audio id="boombox-audio" src="./mainpageassets/Johnny Cash - Hurt.mp3" loop></audio>
 
 
-<img class="banner" src="./womenhealth.gif" alt="">
-<img class="bannertwo" src="./lindabanner.gif" alt="">
-<img class="bannerthree" src="./banner.gif" alt="">
-     
+
+<div class="top-banner">
+<img class="banner" src="./bannergifs/womenhealth.gif" alt="">
+<img class="bannerthree" src="./bannergifs/midnightangels.gif" alt="">
+<img class="bannertwo" src="./bannergifs/lindabanner.gif" alt="">
+</div>
+
+<div class="topbottom-banner">
+<img class="bottombannerfive" src="./bannergifs/WTO.gif" alt="">
+<img class="bottombannersix" src="./bannergifs/glambanner.gif" alt="">
+<img class="bottombannerseven" src="./bannergifs/XXX.gif" alt="">
+</div>
 
 
-<img class="bottombanner" src="./webqueen.gif" alt="">
-<img class="bottombannertwo" src="./lpcanimatedbanner.gif" alt="">
-<img class="bottombannerthree" src="./britney.gif" alt="">
-<img class="bottombannerfour" src="./marriage.gif" alt="">
-<img class="bottombannerfive" src="./banner2.gif" alt="">
-<img class="bottombannersix" src="./glambanner.gif" alt="">
-<img class="bottombannerseven" src="./riverisland.gif" alt="">
+<div class="bottom-banner">
+<img class="bottombanner" src="./bannergifs/webqueen.gif" alt="">
+<img class="bottombannertwo" src="./bannergifs/lpcanimatedbanner.gif" alt="">
+<img class="bottombannerthree" src="./bannergifs/britney.gif" alt="">
+<img class="bottombannerfour" src="./bannergifs/marriage.gif" alt="">
+</div>
+
+
+
 
 
   <!-- Clickable gifs with positioned links -->
