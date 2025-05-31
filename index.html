@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-image: url(./FINALMOODBOARD.png);
+      background-image: url(./assets/FINALMOODBOARD.png);
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -53,8 +53,8 @@
     }
 
     .boxrow img {
-      width: 200px;
-      height: 200px;
+      width: 180px;
+      height: 180px;
       object-fit: contain;
     }
 
@@ -79,7 +79,7 @@
       align-items: center;
       gap: 20px;
       position: absolute;
-      top: 74vh;
+      top: 78vh;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
@@ -119,60 +119,68 @@
       }
     }
 
-    /* Centered popup */
-    #idgafPopup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 999;
-      max-width: 80vw;
-      max-height: 80vh;
-      cursor: pointer;
-    }
+ #idgafPopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 70vw;  /* You can adjust this to make it larger */
+  height: auto;
+  cursor: pointer;
+  filter: 
+    drop-shadow(0 0 5px white)
+    drop-shadow(0 0 10px white)
+    drop-shadow(0 0 20px white)
+    drop-shadow(0 0 40px white);
+}
+  
+
+
   </style>
 </head>
 <body>
 
   <!-- Title -->
   <div class="title">
-    <img src="./g.url.png" alt="">
+    <img src="./assets/g.url.png" alt="">
   </div>
 
   <!-- Subtitle -->
   <div class="subtitle">
-    <img src="./subheading.png" alt="">
+    <img src="./assets/subheading.png" alt="">
   </div>
 
   <!-- Letter Row -->
   <div class="boxrow">
-    <img src="./G.png" alt="">
-    <img src="./U.png" alt="">
-    <img src="./R.png" alt="">
-    <img src="./L.png" alt="">
+    <img src="./assets/G.png" alt="">
+    <img src="./assets/U.png" alt="">
+    <img src="./assets/R.png" alt="">
+    <img src="./assets/L.png" alt="">
   </div>
 
-  <!-- IDGAF Image Popup (Initially Hidden) -->
-  <img id="idgafPopup" src="./IDGAF.png" alt="IDGAF">
 
-  <!-- Clickable Text -->
+  <img id="idgafPopup" src="./assets/IDGAF.png" alt="IDGAF">
+
+
   <div class="textquestion">
-    <img id="clickableText" src="./clickabletext.png" alt="Clickable Text">
+    <img id="clickableText" src="./assets/clickabletext.png" alt="Clickable Text">
   </div>
 
-  <!-- Enter Button -->
+
   <div class="enterbutton">
-    <div class="button-container"><img class="gif-arrow" src="./pfeilvor.gif" alt=""></div>
-    <div class="button-container"><img class="blinking-arrow" src="./arrow1.png" alt=""></div>
-    <div class="button-container"><img class="blinking-arrow" src="./arrow1.png" alt=""></div>
-    <div class="button-container"><img id="enter" src="./ENTERBUTTON.png" alt=""></div>
-    <div class="button-container"><img class="blinking-arrow" src="./arrow2.png" alt=""></div>
-    <div class="button-container"><img class="blinking-arrow" src="./arrow2.png" alt=""></div>
-    <div class="button-container"><img class="gif-arrow" src="./pfeilzurueck.gif" alt=""></div>
+    <div class="button-container"><img class="gif-arrow" src="./assets/arrowgifright.gif" alt=""></div>
+    <div class="button-container"><img class="blinking-arrow" src="./assets/arrow1.png" alt=""></div>
+    <div class="button-container"><img class="blinking-arrow" src="./assets/arrow1.png" alt=""></div>
+    <div class="button-container"><img id="enter" src="./assets/ENTERBUTTON.png" alt=""></div>
+    <div class="button-container"><img class="blinking-arrow" src="./assets/arrow2.png" alt=""></div>
+    <div class="button-container"><img class="blinking-arrow" src="./assets/arrow2.png" alt=""></div>
+    <div class="button-container"><img class="gif-arrow" src="./assets/arrowgifleft.gif" alt=""></div>
   </div>
 
-  <!-- Script -->
   <script>
     const arrows = document.querySelectorAll('.blinking-arrow');
     let visible = true;
@@ -191,14 +199,15 @@
 
     const clickableText = document.getElementById('clickableText');
     const idgafPopup = document.getElementById('idgafPopup');
+    
+clickableText.addEventListener('click', () => {
+  if (idgafPopup.style.display === 'block') {
+    idgafPopup.style.display = 'none';
+  } else {
+    idgafPopup.style.display = 'block';
+  }
+});
 
-    clickableText.addEventListener('click', () => {
-      idgafPopup.style.display = 'block';
-    });
-
-    idgafPopup.addEventListener('click', () => {
-      idgafPopup.style.display = 'none';
-    });
   </script>
 
 </body>
