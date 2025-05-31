@@ -34,146 +34,162 @@ let images = [
   'https://i.pinimg.com/474x/4f/8c/53/4f8c535fc83323c39f6fa384bec4a7d6.jpg',
   'https://i.pinimg.com/474x/c2/48/8c/c2488c6de74c0fde370d8f5fbc999528.jpg',
   'https://i.pinimg.com/474x/c1/cf/ad/c1cfad04a111e5640fa1f8909fe3a2ae.jpg',
-  'https://i.pinimg.com/474x/99/0e/6a/990e6afc138568f50c789f23eb26c2bf.jpg'
+  'https://i.pinimg.com/474x/99/0e/6a/990e6afc138568f50c789f23eb26c2bf.jpg',
+  'https://i.pinimg.com/736x/3a/99/e2/3a99e24b3a90f6d3eff33b9591241ea4.jpg',
+  'https://i.pinimg.com/736x/31/e0/be/31e0be0e932c83d2e3486c27fa7b6f57.jpg',
+  'https://i.pinimg.com/736x/91/e1/14/91e114e2773f4d9233c31f1ad3913c7a.jpg',
+  'https://i.pinimg.com/736x/0e/1b/57/0e1b57e3e99c9451371053b9afe9cc6e.jpg',
+  'https://i.pinimg.com/736x/30/ef/90/30ef90cf50d0393a819c20e4c3aa1729.jpg',
+  'https://i.pinimg.com/736x/5c/b0/ab/5cb0abb1e446eb3b43e94cd35794dea4.jpg',
+  'https://i.pinimg.com/736x/cc/39/76/cc3976988d5b67304c62d4b86d09e11a.jpg'
 ];
 
-let gifElement;
-let imgElement;
-let font;
+let gifElement, framegifElement, imgElement, frameElement;
+let font, canvas;
 let showText = true;
-let canvas;
-let frameElement;
+let button, downloadButton;
+let overlay;
+let sound;
+let hasPlayedSound = false;
 
 function preload() {
-  font = loadFont('./assets/impact.ttf', 
-    () => console.log('Font loaded'), 
-    () => console.error('Font failed to load')
-  );
+  font = loadFont('./assets/impact.ttf');
+  sound = loadSound ('./assets/fuckthepain.mp3')
 }
 
 function setup() {
-  // Create canvas and layer it between the GIF and image
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
-  canvas.style('z-index', '2'); // Above the GIF, below the image
+  canvas.style('z-index', '2');
 
-  // Load and show intro GIF
-  gifElement = createImg('./assets/B175.gif', 'intro gif');
-  gifElement.position(0, 0);
-  gifElement.style('position', 'absolute');
-  gifElement.style('top', '50%');
-  gifElement.style('left', '50%');
-  gifElement.style('transform', 'translate(-50%, -50%)');
-  gifElement.style('width', '100vw');
-  gifElement.style('height', '100vh');
-  gifElement.style('z-index', '1'); // Bottom layer
+  gifElement = createImg('./assets/B175.gif');
+  setupFullScreenElement(gifElement, '1');
 
-  framegifElement= createImg('./assets/f', 'intro gif');
-  framegifElement.position(0, 0);
-  framegifElement.style('position', 'absolute');
-  framegifElement.style('top', '50%');
-  framegifElement.style('left', '50%');
-  framegifElement.style('transform', 'translate(-50%, -50%)');
-  framegifElement.style('width', '100vw');
-  framegifElement.style('height', '100vh');
-  framegifElement.style('z-index', '1'); // Bottom layer
+  framegifElement = createImg('./assets/f');
+  setupFullScreenElement(framegifElement, '1');
 
-  // Create and hide the random image element
   imgElement = createImg('', 'random image');
-  imgElement.position(0, 0);
-  imgElement.style('position', 'absolute');
-  imgElement.style('top', '50%');
-  imgElement.style('left', '50%');
-  imgElement.style('transform', 'translate(-50%, -50%)');
-  imgElement.style('max-width', '90vw');
-  imgElement.style('max-height', '90vh');
-  imgElement.style('z-index', '3'); // Above everything
+  setupCenteredMedia(imgElement, '3');
   imgElement.hide();
 
-    frameElement = createImg('./assets/frame2.gif', 'gif frame'); // Use your frame GIF path
-  frameElement.position(0, 0);
-  frameElement.style('position', 'absolute');
-  frameElement.style('top', '50%');
-  frameElement.style('left', '50%');
-  frameElement.style('transform', 'translate(-50%, -50%)');
-  frameElement.style('max-width', '90vw');
-  frameElement.style('max-height', '90vh');
-  frameElement.style('z-index', '3'); // Same as image
+  frameElement = createImg('./assets/frame2.gif', 'frame');
+  setupCenteredMedia(frameElement, '3');
   frameElement.hide();
 
-  // Button to load random image
-  let button = createButton("find the most esoteric girl meme");
-  button.position(120, 520);
-  button.style('z-index', '4'); // Keep button on top
- button.style('cursor', 'url("./cursor/billyray.cur"), pointer'); // 👈 set custom cursor
-  button.mousePressed(loadRandomImage);
-
-
- let DLBUTTON = createButton("download your favourite");
-DLBUTTON.position(120, 580);
-DLBUTTON.style('z-index', '4');
-DLBUTTON.style('cursor', 'url("./cursor/billyray.cur"), pointer');
-DLBUTTON.mousePressed(() => {
-  if (imgElement && imgElement.elt.src) {
-    const link = document.createElement('a');
-    link.href = imgElement.elt.src;
-    link.download = 'gurlmeme.jpg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-});
+  overlay = createDiv('');
+  overlay.size(windowWidth, windowHeight);
+  overlay.position(0, 0);
+  overlay.style('position', 'absolute');
+  overlay.style('z-index', '5');
+  overlay.mousePressed(() => {
+    showText = false;
+    overlay.hide();
+    gifElement.hide();
+    framegifElement.hide();
+    showButtons();
+    loadRandomImage();
+  });
 }
 
 function draw() {
   clear();
   if (showText) {
     textFont(font);
-    textSize(64);
+    textSize(84);
     textAlign(CENTER, CENTER);
-    fill(255);           // White text
-    stroke(0);           // Black outline
-    strokeWeight(8);
+    fill(255);
+    stroke(0);
+    strokeWeight(6);
     text('my g.url meme is my rite', width / 2, height / 2);
   }
 }
 
+function setupFullScreenElement(el, z) {
+  el.position(0, 0);
+  el.style('position', 'absolute');
+  el.style('top', '50%');
+  el.style('left', '50%');
+  el.style('transform', 'translate(-50%, -50%)');
+  el.style('width', '100vw');
+  el.style('height', '100vh');
+  el.style('z-index', z);
+}
+
+function setupCenteredMedia(el, z) {
+  el.position(0, 0);
+  el.style('position', 'absolute');
+  el.style('top', '50%');
+  el.style('left', '50%');
+  el.style('transform', 'translate(-50%, -50%)');
+  el.style('max-width', '90vw');
+  el.style('max-height', '90vh');
+  el.style('z-index', z);
+}
+
+function showButtons() {
+  button = createButton("find the most esoteric girl meme");
+  button.style('z-index', '4');
+  button.style('cursor', 'url("./cursor/billyray.cur"), pointer');
+  button.mousePressed(loadRandomImage);
+
+  downloadButton = createButton("download your favourite");
+  downloadButton.style('z-index', '4');
+  downloadButton.style('cursor', 'url("./cursor/billyray.cur"), pointer');
+  downloadButton.mousePressed(() => {
+    if (imgElement && imgElement.elt.src) {
+      const link = document.createElement('a');
+      link.href = imgElement.elt.src;
+      link.download = 'gurlmeme.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  });
+}
+
+
 function loadRandomImage() {
-  let imgURL = random(images);
-  imgElement.attribute('src', imgURL);
+
+  if (!hasPlayedSound && sound && !sound.isPlaying()) {
+  sound.play();
+  hasPlayedSound = true;
+}
+
+
+  const url = random(images);
+  imgElement.attribute('src', url);
   imgElement.hide();
   frameElement.hide();
-
-  gifElement.hide();
-  framegifElement.hide();
-  showText = false;
 
   imgElement.elt.onload = () => {
     const imgW = imgElement.elt.naturalWidth;
     const imgH = imgElement.elt.naturalHeight;
     const maxW = windowWidth * 0.5;
     const maxH = windowHeight * 0.7;
+    const scale = min(maxW / imgW, maxH / imgH);
 
-    const scale = Math.min(maxW / imgW, maxH / imgH);
     const displayW = imgW * scale;
     const displayH = imgH * scale;
 
-    // Apply new sizing and keep using centered CSS
-    imgElement.size(displayW , displayH);
+    imgElement.size(displayW, displayH);
     frameElement.size(displayW, displayH);
-
-    // Centered via CSS transform — keep positioning at 50%, 50%
-    imgElement.style('top', '50%');
-    imgElement.style('left', '50%');
-    imgElement.style('transform', 'translate(-50%, -50%)');
-
-    frameElement.style('top', '50%');
-    frameElement.style('left', '50%');
-    frameElement.style('transform', 'translate(-50%, -50%)');
-
     imgElement.show();
     frameElement.show();
+
+    // Image center
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    // Position buttons centered vertically, flanking image horizontally
+    const spaceFromImage = 40;
+    const buttonY = centerY - 20; // approx center, can fine-tune
+    const leftX = centerX - displayW / 2 - button.width - spaceFromImage;
+    const rightX = centerX + displayW / 2 + spaceFromImage;
+
+    if (button && downloadButton) {
+      button.position(leftX, buttonY);       // Left of image
+      downloadButton.position(rightX, buttonY); // Right of image
+    }
   };
 }
-
 
