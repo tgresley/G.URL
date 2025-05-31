@@ -1,10 +1,4 @@
-<!--
-  👋 Hello! This is an ml5.js example made and shared with ❤️.
-  Learn more about the ml5.js project: https://ml5js.org/
-  ml5.js license and Code of Conduct: https://github.com/ml5js/ml5-next-gen/blob/main/LICENSE.md
-
-  This example demonstrates keypoint tracking of facial features on live video through ml5.faceMesh.
--->
+<!-- ml5.js example taken and tweaked from https://ml5js.org/ -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +16,7 @@
 
     @font-face {
       font-family: 'Qaskin';
-      src: url(./qaskin.ttf);
+      src: url(./assets/qaskin.ttf);
     }
     canvas {
       position: absolute;
@@ -54,6 +48,7 @@
 }
 
 .frame {
+
    position: absolute;
      left: 50%;
       top: 50%;
@@ -92,7 +87,7 @@
     
 
     <div class="background">
-<img src="./bg2.jpg" alt="">
+<img src="./assets/bg2.jpg" alt="">
     </div>
 
     <div class="title">
@@ -100,12 +95,26 @@
     </div>
 
     <div class="frame">
-<img src="./frame2.png" alt="">
+<img src="./assets/frame2.png" alt="">
     </div>
 
     <a href="/G.URL/directory/index.html">
-  <img src="./homebutton.gif" alt="Home" class="home-button" />
+  <img src="./assets/homebutton.gif" alt="Home" class="home-button" />
 </a>
+
+<div id="loading" style="
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Qaskin';
+  font-size: 52px;
+  color: aquamarine;
+  padding: 20px 40px;
+  border-radius: 10px;
+  z-index: 4;">
+  loading analysis...
+</div>
 
     <script src="sketch.js"></script>
   </body>

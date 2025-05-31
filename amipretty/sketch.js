@@ -12,6 +12,7 @@ let messages = [
   "Analyzing girl prettiness... are you pretty?",
   "NO!"
 ];
+
 let currentMessage = "";
 let messageIndex = 0;
 let lastChangeTime = 0;
@@ -19,21 +20,25 @@ let messageDelay = 3000;
 let startMessages = false;
 let hasDetectedFace = false;
 
+let baseWidth = 576;
+let baseHeight = 432;
+
 function preload() {
   faceMesh = ml5.faceMesh(options);
 }
 
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(baseWidth, baseHeight);
   video = createCapture(VIDEO);
-  video.size(640, 480);
+  video.size(baseWidth, baseHeight);
   video.hide();
-
   faceMesh.detectStart(video, gotFaces);
 }
 
 function draw() {
-  image(video, 0, 0, width, height);
+  background(0);
+
+  image(video, 0, 0, baseWidth, baseHeight);
 
   for (let j = 0; j < faces.length; j++) {
     let face = faces[j];
@@ -45,14 +50,15 @@ function draw() {
       lastChangeTime = millis();
     }
 
+   
     strokeWeight(5);
     let frameColors = [
-      color(255, 105, 180), // pink
-      color(255, 192, 203), // light pink
-     color(255, 192, 203), // light pink
-    color(194, 255, 110),
-   color(194, 255, 110),
-      color(255, 105, 97)   // coral pink
+      color(255, 105, 180),
+      color(255, 192, 203),
+      color(255, 192, 203),
+      color(194, 255, 110),
+      color(194, 255, 110),
+      color(255, 105, 97)
     ];
 
     function drawPart(part, shadeIndex) {
@@ -70,11 +76,12 @@ function draw() {
     drawPart('rightEyebrow', 4);
     drawPart('faceOval', 5);
 
-    // Aquamarine analysis-style data
+
     fill(127, 255, 212);
     noStroke();
     textSize(14);
     textAlign(LEFT, TOP);
+
     let dataY = 60;
     let lineHeight = 24;
 
@@ -97,18 +104,26 @@ function draw() {
       avgPoint(rightEye).x - avgPoint(leftEye).x
     )).toFixed(1);
 
-    text("EYE DISTANCE:   " + eyeDist.toFixed(2), 10, dataY);
-    text("MOUTH WIDTH:    " + mouthWidth.toFixed(2), 10, dataY + lineHeight);
-    text("HEAD TILT:      " + tiltAngle + "°", 10, dataY + 2 * lineHeight);
-    text("SMILE LEVEL:    " + nf(mouthWidth / eyeDist, 1, 2), 10, dataY + 3 * lineHeight);
+    text("slay!:   " + eyeDist.toFixed(2), 10, dataY);
+    text("pre-pubesence:    " + mouthWidth.toFixed(2), 10, dataY + lineHeight);
+    text("foxpretty:        " + tiltAngle + "°", 10, dataY + 2 * lineHeight);
+    text("cvnt-factor:      " + nf(mouthWidth / eyeDist, 1, 2), 10, dataY + 3 * lineHeight);
   }
 
+
+  fill(127, 255, 212);
+  noStroke();
+
   if (startMessages) {
-    fill(127, 255, 212);
-    noStroke();
-    textAlign(CENTER, TOP);
-    textSize(32);
-    text(currentMessage, width / 2, 10);
+    if (currentMessage === "NO!") {
+      textAlign(CENTER, CENTER);
+      textSize(min(width, height) * 0.8);
+      text(currentMessage, width / 2, height / 2);
+    } else {
+      textAlign(CENTER, TOP);
+      textSize(28);
+      text(currentMessage, width / 2, 20);
+    }
 
     if (millis() - lastChangeTime > messageDelay) {
       messageIndex = min(messageIndex + 1, messages.length - 1);
