@@ -1,6 +1,6 @@
 let passwordInput, submitButton;
 let accessGranted = false;
-let secretPassword = "cutie";
+let secretPassword = "girlboss!";
 let bgImage;
 let pixelFont;
 let introMessage;
@@ -8,7 +8,7 @@ let hintMessage;
 let homeButton;
 
 function preload() {
-  bgImage = loadImage('./assets/bg.jpg');
+  bgImage = loadImage('./assets/girlmath.jpg');
 
 }
 
@@ -16,7 +16,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // Intro message
-  introMessage = createP('💋 No boys allowed! This page is password protected. You can find the password somewhere on the site. Good luck girly! 💋');
+  introMessage = createP(' No boys allowed! This page is password protected. You can find the password somewhere on the site. Good luck girly! ');
   introMessage.position(width / 2 - 300, height / 2 - 120);
   introMessage.style('font-size', '20px');
   introMessage.style('font-family', 'monospace');
@@ -38,12 +38,12 @@ function setup() {
   homeButton.style('cursor', 'pointer');
 homeButton.style('width', '100px');
   homeButton.mousePressed(() => {
-    window.location.href = '/directory/index.html'; // change to your homepage path
+    window.location.href = 'G.URL/directory/index.html'; // change to your homepage path
   });
 
   // Password input field
   passwordInput = createInput('');
-  passwordInput.attribute('placeholder', '💖 enter the magic word 💖');
+  passwordInput.attribute('placeholder', ' enter the magic word ');
   passwordInput.position(width / 2 - 250, height / 2 + 10);
   passwordInput.style('padding', '12px');
   passwordInput.style('font-size', '14px');
@@ -55,7 +55,7 @@ homeButton.style('width', '100px');
   passwordInput.style('font-family', 'monospace');
 
   // Submit button
-  submitButton = createButton('✨ Enter ✨');
+  submitButton = createButton(' Enter ');
   submitButton.position(width / 2 - 40, height / 2 + 60);
   submitButton.style('background', '#ff99cc');
   submitButton.style('border', '2px solid deeppink');
@@ -75,20 +75,15 @@ function draw() {
     stroke('#ff00ff');
     strokeWeight(4);
     textAlign(CENTER, CENTER);
-    text('💅 welcome to the secret g.url page 💅', width / 2, height / 2);
+    text(' welcome to the secret g.url page ', width / 2, height / 2);
   }
 }
 
 function checkPassword() {
   if (passwordInput.value().toLowerCase() === secretPassword.toLowerCase()) {
-    accessGranted = true;
-    passwordInput.hide();
-    submitButton.hide();
-    introMessage.hide();
-    hintMessage.hide();
-    homeButton.hide();
+    window.location.href = "./calculator/index.html"; // redirect on success
   } else {
     passwordInput.value('');
-    passwordInput.attribute('placeholder', '💔 nope, try again 💔');
+    passwordInput.attribute('placeholder', ' nope, try again ');
   }
 }

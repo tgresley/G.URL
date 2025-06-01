@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Girl Calculator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <style>
+    @font-face {
+      font-family: CALC;
+      src: url(../assets/Calculator.ttf);
+    }
+
+    body {
+      margin: 0;
+      font-family: CALC;
+    background-image: url(./64c41f85def5f196a7b5f63fe7191a35.jpg);
+    background-repeat: repeat;
+    background-size: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #comment-box {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      max-width: 1000px;
+      text-align: center;
+      font-family: CALC;
+      font-size: 50px;
+      color: #ff0095;
+      background: #fff0f8;
+      padding: 10px 20px;
+      font-weight: 800;
+
+      
+    }
+
+    #calculator-container {
+      background: #fff0f8;
+      border: 3px solid #ff99cc;
+      padding: 20px;
+   
+    }
+
+    canvas {
+      display: block;
+    }
+
+    .home-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: auto;
+  z-index: 300;
+
+}
+  </style>
+</head>
+<body>
+  <div id="comment-box"> waiting for your girlmath...</div>
+  <div id="calculator-container"></div>
+
+    <a href="/G.URL/directory/index.html">
+  <img src="./homebutton.gif" alt="Home" class="home-button" />
+</a>
+
+
+
+ <script>
+  let currentQuestion = "";
+  let displayText = "";
+  let input = "";
+  let typingIndex = 0;
+  let feedback = "";
+  let lastAnswerCorrect = false;
+  let showingQuestion = true;
+  let correctAnswer;
+  let currentQuestionObj;
+
+  const questions = [
+    {
+      text: "IF YOU CAME HOME WITH $20 CASH WHEN YOU LEFT WITH $40, HOW MUCH DID YOU SPEND?",
+      answer: 0,
+      comment: "cash isnt real money in the hand of a girl who needs to shop duhhh"
+    },
+    {
+      text: "IF THERE WAS A 50% SALE ON A $200 BYE-BAMBI T-SHIRT, HOW MUCH PROFIT DID YOU MAKE",
+      answer: 100,
+      comment: "you were literally going to spend that money there anyway diva, so the $100 is a bonus"
+    },
+    {
+      text: "IF YOU SHOWER AT 3PM, HOW MANY HOURS UNTIL YOUR NEXT SHOWER",
+      answer: 6,
+      comment: "in this clean girl economy, i have to have an #everything shower before i girlrot to tiktoks"
+    },
+    {
+      text: "IF YOU EARNED 12 DOLLARS AN HOUR FOR 4 HOURS, HOW MUCH MONEY DO YOU HAVE TO SPEND",
+      answer: 96,
+      comment: "you have to reward yourself #selfcare for working"
+    },
+    {
+      text: "HOW MANY HOURS IS THE MAX FOR HIM TO DM U BACK",
+      answer: 4,
+      comment: "one hour to account for boy time, one hour for being just so silly and forgetful, one hour for toilet time and one hour for work"
+    }
+  ];
+
+  function setup() {
+    let canvas = createCanvas(800, 700);
+    canvas.parent("calculator-container");
+    textFont("CALC");
+    textSize(44);
+    frameRate(30);
+    newQuestion();
+  }
+
+  function draw() {
+    background('#ffe6f2');
+
+    // Calculator body
+    noStroke();
+    fill('#ff8acb');
+    rect(35, 60, 730, 130);
+
+    // Display box
+    fill('#111');
+    rect(45, 70, 710, 110, 15);
+
+    fill('#98ff98');
+    textAlign(LEFT, TOP);
+    textSize(28);
+
+    if (typingIndex < currentQuestion.length) {
+      displayText += currentQuestion[typingIndex];
+      typingIndex++;
+    } else {
+      showingQuestion = false;
+    }
+
+    text(displayText, 55, 80, 690, 90);
+
+    if (!showingQuestion) {
+      textAlign(RIGHT, TOP);
+      textSize(28);
+      fill('#98ff98');
+      text(input, 720, 130);
+    }
+
+    drawButtons();
+
+    if (feedback !== "") {
+      textSize(100);
+      textAlign(CENTER);
+      fill(lastAnswerCorrect ? '#00cc66' : '#ff3366');
+      text(feedback, width / 2, 300);
+    }
+  }
+
+  function drawButtons() {
+    const buttons = [
+      ["7", "8", "9"],
+      ["4", "5", "6"],
+      ["1", "2", "3"],
+      ["0", "←", "OK"]
+    ];
+
+    const startX = 35;
+    const startY = 280;
+    const buttonW = 160;
+    const buttonH = 80;
+    const hGap = 180;
+    const vGap = 100;
+
+    for (let row = 0; row < buttons.length; row++) {
+      for (let col = 0; col < 3; col++) {
+        const x = startX + col * hGap;
+        const y = startY + row * vGap;
+        stroke('#ff99cc');
+        strokeWeight(2);
+        fill('#ffffff');
+        rect(x, y, buttonW, buttonH);
+        fill('#ff3399');
+        noStroke();
+        textAlign(CENTER, CENTER);
+        textSize(32);
+        text(buttons[row][col], x + buttonW / 2, y + buttonH / 2);
+      }
+    }
+  }
+
+  function mousePressed() {
+    if (typingIndex < currentQuestion.length) return;
+
+    const startX = 35;
+    const startY = 280;
+    const buttonW = 160;
+    const buttonH = 80;
+    const hGap = 180;
+    const vGap = 100;
+
+    const col = floor((mouseX - startX) / hGap);
+    const row = floor((mouseY - startY) / vGap);
+
+    if (col >= 0 && col < 3 && row >= 0 && row < 4) {
+      const value = [
+        ["7", "8", "9"],
+        ["4", "5", "6"],
+        ["1", "2", "3"],
+        ["0", "←", "OK"]
+      ][row][col];
+
+      if (value === "←") {
+        input = input.slice(0, -1);
+      } else if (value === "OK") {
+        checkAnswer();
+      } else {
+        input += value;
+      }
+    }
+  }
+
+  function checkAnswer() {
+    document.getElementById('comment-box').innerText = currentQuestionObj.comment;
+
+    if (parseInt(input) === correctAnswer) {
+      feedback = "yass!!!!";
+      lastAnswerCorrect = true;
+      setTimeout(() => {
+        newQuestion();
+      }, 2500);
+    } else {
+      feedback = "not girldumb enough!";
+      lastAnswerCorrect = false;
+    }
+  }
+
+  function newQuestion() {
+    currentQuestionObj = random(questions);
+    currentQuestion = currentQuestionObj.text;
+    correctAnswer = currentQuestionObj.answer;
+    input = "";
+    displayText = "";
+    typingIndex = 0;
+    showingQuestion = true;
+    feedback = "";
+    document.getElementById('comment-box').innerText = " waiting for your #GIRLMATH";
+  }
+</script>
+
+</body>
+</html>
